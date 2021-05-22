@@ -1,0 +1,1 @@
+void Array(int *data, int *target, int d, int q);
