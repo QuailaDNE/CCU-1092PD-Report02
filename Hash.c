@@ -1,7 +1,7 @@
 #include "basic.h"
 
 struct dnode {
-	char key[DEFMAXHASH];
+	char *key;
 	int cnt;
 	struct dnode *next;
 };
@@ -9,6 +9,7 @@ struct dnode {
 struct dnode *l_insert(struct dnode *l, char *key) {
 	struct dnode *p;
 	p = (struct dnode *)malloc(sizeof(struct dnode));
+	p -> key = malloc(sizeof(char) * DEFMAXHASH);
 	strcpy(p -> key, key);
 	p -> cnt = 1;
 	p -> next = l;
