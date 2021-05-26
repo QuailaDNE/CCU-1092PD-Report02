@@ -5,7 +5,7 @@
 #include <sys/time.h>
 #include <time.h>
 
-#define  DEFMAXHASH 	(1<<20)
+#define  DEFMAXHASH 	1<<20
 #define  int32 			unsigned int
 
 struct timeval start, end, diff;

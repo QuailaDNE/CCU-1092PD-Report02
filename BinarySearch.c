@@ -22,21 +22,22 @@ void binarySearch(int target, int *data, int dataCnt) {
 	}
 }
 
+int cmpnum(void const *a, void const *b) { 
+    return (*(int *)a - *(int *)b);
+}
+
 void BinarySearchArray(int *data, int *target, int d, int q) {
 	int i = 0, j = 0, tmp;
 	double build_time;
 	double search_time;
 
+	int *dataA = malloc(sizeof(int) * d);
+
 	gettimeofday(&start, NULL);
-	for(i = 0; i < d - 1; i ++) {
-		for(j = 0; j < d - 1 - i; j ++) {
-			if(data[j] > data[j+1]) {
-				tmp = data[j];
-				data[j] = data[j+1];
-				data[j+1] = tmp;
-			}
-		}
+	for(i = 0; i < d; i ++){
+		dataA[i] = data[i];
 	}
+	qsort(dataA, d, sizeof(int), cmpnum);
 	gettimeofday(&end, NULL);
 	timersub(&end, &start, &diff);
 	build_time = diff.tv_sec + (double)diff.tv_usec/1000000.0;
